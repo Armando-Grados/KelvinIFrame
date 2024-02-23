@@ -14,3 +14,10 @@ body * {
   align-items: center;
   justify-content: center;
 }
+
+.btn {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  color: white !important;
+  text-transform: none !important;
+}

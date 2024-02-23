@@ -10,7 +10,7 @@ const themeOptions = [
       palette: {
         mode: "light",
         primary: {
-          // main: "#EE2965",
+          main: "#2bcd00",
           // light: "#FFD3E0",
         },
       },
