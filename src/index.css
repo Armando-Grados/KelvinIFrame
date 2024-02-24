@@ -21,3 +21,15 @@ body * {
   color: white !important;
   text-transform: none !important;
 }
+
+.cust_img_box {
+  max-width: 130px;
+}
+
+.cust_issue_img{
+  max-width: 60px;
+}
+
+@media (max-width: 500px) {
+
+}
