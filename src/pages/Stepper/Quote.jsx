@@ -12,8 +12,9 @@ import {
 } from "@mui/material";
 import React from "react";
 import EastIcon from "@mui/icons-material/East";
+import PhoneInput from "react-phone-input-2";
 
-const Quote = ({ changeStep, onSubmit, onInputChange, formData }) => {
+const Quote = ({ changeStep, onSubmit, onInputChange, formData, error }) => {
   const onBack = () => {
     // setSelectedModel("");
     changeStep(2);
@@ -41,6 +42,7 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData }) => {
               <Box sx={{ mt: 2 }}>
                 <FormControl size="small">
                   <RadioGroup
+                    error={error && formData.platform.trim().length === 0}
                     row
                     aria-labelledby="quote_platform"
                     name="platform"
@@ -66,6 +68,7 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData }) => {
                 </FormControl>
 
                 <TextField
+                  error={error && formData.name.trim().length === 0}
                   value={formData.name}
                   onChange={(e) => onInputChange("name", e.target.value)}
                   sx={{
@@ -81,6 +84,7 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData }) => {
                   fullWidth
                 />
                 <TextField
+                  error={error && formData.email.trim().length === 0}
                   value={formData.email}
                   onChange={(e) => onInputChange("email", e.target.value)}
                   sx={{
@@ -96,6 +100,27 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData }) => {
                   fullWidth
                 />
 
+                <Box
+                  sx={{
+                    width: "100%",
+                    mt: 2,
+                  }}
+                >
+                  <PhoneInput
+                    // isValid={error && formData.phone.trim().length < 5}
+                    country={"pe"}
+                    preferredCountries={["in", "pe"]}
+                    value={formData.phone}
+                    onChange={(phone) => {
+                      onInputChange("phone", phone);
+                    }}
+                    // inputProps={{
+                    //   name: "phone",
+                    //   required: true,
+                    // }}
+                  />
+                </Box>
+
                 <textarea
                   rows={4}
                   // value={formData.msg}
@@ -106,7 +131,7 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData }) => {
                     fontSize: "16px",
                     // border: "#000000de",
                     borderRadius: "6px",
-                    marginTop: "10px",
+                    marginTop: "14px",
                   }}
                   placeholder="Message (optional)"
                 />

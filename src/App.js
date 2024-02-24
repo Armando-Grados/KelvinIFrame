@@ -4,6 +4,7 @@ import { router } from "./routes";
 import { RouterProvider } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ToastContainer } from "react-toastify";
+import "react-phone-input-2/lib/style.css";
 
 function App() {
   const theme = useMemo(() => {

@@ -22,6 +22,12 @@ body * {
   text-transform: none !important;
 }
 
+.react-tel-input{
+  input{
+    width: 100% !important;
+  }
+} 
+
 .cust_img_box {
   max-width: 130px;
 }

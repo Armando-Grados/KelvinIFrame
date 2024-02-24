@@ -32,13 +32,19 @@ const StepperPage = () => {
     name: "",
     email: "",
     message: "",
+    phone: "",
   });
+
+  const [error, setError] = useState(false);
 
   const onInputChange = (key, value) => {
     setFormData((prev) => ({
       ...prev,
       [key]: value,
     }));
+    if (error) {
+      setError(false);
+    }
   };
 
   const changeStep = (val) => {
@@ -47,6 +53,7 @@ const StepperPage = () => {
 
   const printAll = () => {
     const obj = {
+      formData,
       device,
       selectedModel,
       selectedIssue,
@@ -55,6 +62,7 @@ const StepperPage = () => {
   };
 
   const onSubmit = () => {
+    setError(true);
     printAll();
   };
 
@@ -123,6 +131,7 @@ const StepperPage = () => {
                 onSubmit={onSubmit}
                 onInputChange={onInputChange}
                 formData={formData}
+                error={error}
               />
             )}
           </Box>
