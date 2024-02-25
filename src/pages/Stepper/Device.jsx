@@ -47,8 +47,10 @@ const Device = ({ changeStep, device, setDevice, setModels }) => {
               className="flex_center_display"
               onClick={() => onDeviceClick(elem.id)}
             >
-              <Box>
-                <img src={elem.img_src} alt="img" className="cust_img_box" />
+              <Box sx={{ p: 2 }}>
+                <Box className="flex_center_display">
+                  <img src={elem.img_src} alt="img" className="cust_img_box" />
+                </Box>
                 <Typography
                   align="center"
                   sx={{

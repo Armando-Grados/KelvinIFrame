@@ -24,8 +24,7 @@ const Issues = ({ changeStep, selectedIssue, setSelectedIssue, issues }) => {
         setSelectedIssue(dummyArr);
       } else {
         dummyArr.push({
-          id: item.id,
-          lebel: item.lebel,
+          ...item,
         });
       }
       setSelectedIssue(dummyArr);
@@ -83,8 +82,14 @@ const Issues = ({ changeStep, selectedIssue, setSelectedIssue, issues }) => {
               className="flex_center_display"
               onClick={() => onItemClick(elem.id)}
             >
-              <Box>
-                <img src={elem.img_src} alt="img" className="cust_issue_img" />
+              <Box sx={{ p: 2 }}>
+                <Box className="flex_center_display">
+                  <img
+                    src={elem.img_src}
+                    alt="img"
+                    className="cust_issue_img"
+                  />
+                </Box>
                 <Typography
                   align="center"
                   sx={{

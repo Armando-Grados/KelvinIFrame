@@ -5,7 +5,7 @@ import {
   StepLabel,
   Stepper,
   Typography,
-  useTheme,
+  // useTheme,
 } from "@mui/material";
 import React, { Fragment, useState } from "react";
 import Device from "./Device";
@@ -16,7 +16,7 @@ import Quote from "./Quote";
 const steps = ["Device", "Model", "Issue", "Location", "Quote"];
 
 const StepperPage = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const [activeStep, setActiveStep] = useState(0);
 
@@ -82,7 +82,7 @@ const StepperPage = () => {
             borderRadius: "20px",
           }}
         >
-          <Taglines />
+          <Taglines activeStep={activeStep} device={device} />
           <Box
             sx={{
               my: 4,
@@ -132,6 +132,8 @@ const StepperPage = () => {
                 onInputChange={onInputChange}
                 formData={formData}
                 error={error}
+                device={device}
+                selectedIssue={selectedIssue}
               />
             )}
           </Box>
@@ -141,7 +143,7 @@ const StepperPage = () => {
   );
 };
 
-const Taglines = () => {
+const Taglines = ({ activeStep, device }) => {
   return (
     <Fragment>
       <Typography align="center" sx={{ fontSize: 30, fontWeight: "bolder" }}>
@@ -150,10 +152,12 @@ const Taglines = () => {
       <Typography
         align="center"
         sx={{
-          fontSize: 20,
+          fontSize: 22,
         }}
       >
-        Select your repair issues
+        {activeStep === 0 && "Select your device"}
+        {activeStep === 1 && `${device} > Select your device model`}
+        {activeStep === 2 && `Select your repair issues`}
       </Typography>
     </Fragment>
   );

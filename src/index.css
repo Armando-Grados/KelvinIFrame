@@ -22,20 +22,63 @@ body * {
   text-transform: none !important;
 }
 
-.react-tel-input{
-  input{
+.react-tel-input {
+  input {
     width: 100% !important;
   }
-} 
+}
 
 .cust_img_box {
   max-width: 130px;
 }
 
-.cust_issue_img{
+.cust_issue_img {
   max-width: 60px;
 }
 
-@media (max-width: 500px) {
+.left_quote {
+  position: relative;
+  padding-bottom: 12px;
+}
+.left_quote::after {
+  content: "";
+  display: block;
+  width: 124px;
+  height: 3px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  background-color: #5fbb4c;
+}
 
+.right_quote {
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.right_quote::after {
+  content: "";
+  display: block;
+  width: 124px;
+  height: 3px;
+  background-color: #5fbb4c;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+
+.MuiStep-root{
+  .MuiStepIcon-text{
+    fill: white !important;
+  }
+  .MuiStepLabel-label{
+    p{
+      font-weight: bold !important;
+    }
+  }
+}
+
+@media (max-width: 500px) {
 }

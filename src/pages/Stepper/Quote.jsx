@@ -3,18 +3,27 @@ import {
   Button,
   FormControl,
   FormControlLabel,
-  FormLabel,
+  // FormLabel,
   Grid,
   Radio,
   RadioGroup,
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { Fragment } from "react";
 import EastIcon from "@mui/icons-material/East";
 import PhoneInput from "react-phone-input-2";
+import { startsWith } from "../../utils/utilityFunctions";
 
-const Quote = ({ changeStep, onSubmit, onInputChange, formData, error }) => {
+const Quote = ({
+  changeStep,
+  onSubmit,
+  onInputChange,
+  formData,
+  error,
+  device,
+  selectedIssue,
+}) => {
   const onBack = () => {
     // setSelectedModel("");
     changeStep(2);
@@ -30,16 +39,25 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData, error }) => {
                 px: 6,
                 width: "100%",
                 borderRight: "1px solid #c0bdbd",
+                height: "100%",
               }}
             >
               <Typography
                 align="center"
                 sx={{ fontWeight: "bold", fontSize: "18px" }}
+                className="left_quote"
               >
                 How do you want your quote delivered?*
               </Typography>
 
-              <Box sx={{ mt: 2 }}>
+              <Box
+                sx={{
+                  mt: 2,
+                  "& .MuiTypography-root": {
+                    fontSize: "14px",
+                  },
+                }}
+              >
                 <FormControl size="small">
                   <RadioGroup
                     error={error && formData.platform.trim().length === 0}
@@ -107,7 +125,14 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData, error }) => {
                   }}
                 >
                   <PhoneInput
-                    // isValid={error && formData.phone.trim().length < 5}
+                    // isValid={(inputNumber, country, countries) => {
+                    //   return countries.some((country) => {
+                    //     return (
+                    //       startsWith(inputNumber, country.dialCode) ||
+                    //       startsWith(country.dialCode, inputNumber)
+                    //     );
+                    //   });
+                    // }}
                     country={"pe"}
                     preferredCountries={["in", "pe"]}
                     value={formData.phone}
@@ -149,19 +174,104 @@ const Quote = ({ changeStep, onSubmit, onInputChange, formData, error }) => {
                     Send me the quote
                   </Button>
                 </Box>
-
-                <Typography align="center" sx={{ fontSize: 10, my: 3 }}>
-                  By submitting this form you agree to receive recurring
-                  automated promotional and personalized marketing text messages
-                  and emails from PhixSmart at the cell number and/or email used
-                  when signing up. Consent is not a condition of any purchase
-                  and you can Unsubscribe at any time by using the safe
-                  Unsubscribe button or by replying 'Unsubscribe'
-                </Typography>
               </Box>
+              <Typography align="center" sx={{ fontSize: 10, my: 3 }}>
+                By submitting this form you agree to receive recurring automated
+                promotional and personalized marketing text messages and emails
+                from PhixSmart at the cell number and/or email used when signing
+                up. Consent is not a condition of any purchase and you can
+                Unsubscribe at any time by using the safe Unsubscribe button or
+                by replying 'Unsubscribe'
+              </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} md={4}></Grid>
+          <Grid item xs={12} md={4}>
+            <Box
+              sx={{
+                px: 4,
+              }}
+            >
+              <Typography
+                sx={{ fontWeight: "bold", fontSize: "18px" }}
+                className="right_quote"
+              >
+                Quote Information
+              </Typography>
+
+              <Grid
+                container
+                spacing={1.5}
+                sx={{
+                  mt: 1,
+                  "& .MuiTypography-root": {
+                    fontSize: "14px",
+                  },
+                }}
+              >
+                <Grid xs={4.5} item>
+                  <Typography sx={{ fontWeight: "bold" }}>Device: </Typography>
+                </Grid>
+                <Grid xs={7.5} item>
+                  <Typography>
+                    <Typography>{device}</Typography>
+                  </Typography>
+                </Grid>
+
+                {selectedIssue.map((elem) => (
+                  <Fragment key={elem.id}>
+                    <Grid xs={4.5} item>
+                      <Typography sx={{ fontWeight: "bold" }}>
+                        Problem:{" "}
+                      </Typography>
+                    </Grid>
+                    <Grid xs={7.5} item>
+                      <Typography>
+                        <Typography>{elem.lebel}</Typography>
+                      </Typography>
+                    </Grid>
+                    <Grid xs={4.5} item>
+                      <Typography sx={{ fontWeight: "bold" }}>
+                        Timeframe:{" "}
+                      </Typography>
+                    </Grid>
+                    <Grid xs={7.5} item>
+                      <Typography>
+                        <Typography>{elem.timeframe}</Typography>
+                      </Typography>
+                    </Grid>
+                    <Grid xs={4.5} item>
+                      <Typography sx={{ fontWeight: "bold" }}>
+                        Warranty:{" "}
+                      </Typography>
+                    </Grid>
+                    <Grid xs={7.5} item>
+                      <Typography>
+                        <Typography>{elem.warranty}</Typography>
+                      </Typography>
+                    </Grid>
+                  </Fragment>
+                ))}
+                <Grid xs={12} item>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Description:{" "}
+                  </Typography>
+                  <Typography>
+                    {`Most ${device} repairs are completed in an hour or
+                    two. We use premium parts and our technicians are expert
+                    trained. We also price match! Find another local shop with
+                    better pricing, we'll match it!`}
+                  </Typography>
+                </Grid>
+              </Grid>
+
+              <Typography
+                className="right_quote"
+                sx={{ fontWeight: "bold", fontSize: "18px", mt: 3 }}
+              >
+                Selected Store
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
       </Box>
 

@@ -55,13 +55,16 @@ const Models = ({
               className="flex_center_display"
               onClick={() => onItemClick(elem.id)}
             >
-              <Box>
-                <img src={elem.img_src} alt="img" className="cust_img_box" />
+              <Box sx={{ p: 2 }}>
+                <Box className="flex_center_display">
+                  <img src={elem.img_src} alt="img" className="cust_img_box" />
+                </Box>
                 <Typography
                   align="center"
                   sx={{
                     mt: 0.5,
                     fontSize: "20px",
+                    textWrap: "wrap",
                   }}
                 >
                   {elem.lebel}
