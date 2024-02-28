@@ -68,3 +68,4 @@ const Device = ({ changeStep, device, setDevice, setModels }) => {
 };
 
 export default Device;
+
