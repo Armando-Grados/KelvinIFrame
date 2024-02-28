@@ -31,20 +31,7 @@ body * {
   top: -10px;
 }
 
-.react-tel-input {
-  input {
-    width: 100% !important;
-  }
-  .form-control{
-    padding: 14.5px 14px 14.5px 58px !important;
-    border-color: black;
-    box-shadow: none;
-  }
-  .form-control:focus{
-    border-color: #bb0b0b !important;
-    /* box-shadow: 0 0 0 1px #bb0b0b !important; */
-  }
-}
+
 
 .cust_img_box {
   max-width: 130px;
@@ -91,6 +78,28 @@ body * {
   min-width: 1000px;
 }
 
+
+/* mui card  */
+.card_hover_color {
+  border-radius: 1rem;
+  background-color: #fff;
+  /* boxShadow: "6px 6px 10px rgba(0,0,0,.038)", */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.card_hover_color:hover {
+  /* border: `2px solid ${theme.palette.primary.main} !important`, */
+  border: 1px solid #ccc !important;
+  box-shadow: 5px 5px 0px 0px #bb0b0b !important;
+  transition: all 0.5 ease-out;
+}
+.card_active_class {
+  border: 2px solid #ccc !important;
+  box-shadow: 5px 5px 0px 0px #bb0b0b !important;
+}
+
+
+/* stepper  */
 .MuiStep-root {
   .MuiStepIcon-text {
     fill: white !important;
@@ -101,28 +110,45 @@ body * {
     }
   }
 }
-
-.card_hover_color {
-  border-radius: 1rem;
-  background-color: #fff;
-  /* // boxShadow: "6px 6px 10px rgba(0,0,0,.038)", */
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+.steppr_class_custom {
+  height: 100%;
+  .MuiStepConnector-line {
+    height: 100%;
+  }
 }
-.card_hover_color:hover {
-  /* // border: `2px solid ${theme.palette.primary.main} !important`, */
-  border: 1px solid #ccc !important;
-  box-shadow: 5px 5px 0px 0px #bb0b0b !important;
-  transition: all 0.5 ease-out;
+.stepper_grid_widget_big_screen {
+  display: block;
 }
-.card_active_class {
-  border: 2px solid #ccc !important;
-  box-shadow: 5px 5px 0px 0px #bb0b0b !important;
+.stepper_grid_widget_small_screen {
+  display: none;
 }
 
-@media (max-width: 800px) {
+
+/* tel input  */
+.react-tel-input {
+  input {
+    width: 100% !important;
+  }
+  .form-control {
+    padding: 14.5px 14px 14.5px 58px !important;
+    border-color: black;
+    box-shadow: none;
+  }
+  .form-control:focus {
+    border-color: #bb0b0b !important;
+    /* box-shadow: 0 0 0 1px #bb0b0b !important; */
+  }
+}
+
+@media (max-width: 830px) {
   .main_outer_box_widget {
     min-width: auto !important;
+  }
+  .stepper_grid_widget_big_screen {
+    display: none;
+  }
+  .stepper_grid_widget_small_screen {
+    display: block;
   }
 }
 

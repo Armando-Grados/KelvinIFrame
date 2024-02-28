@@ -1,5 +1,6 @@
 import {
   Box,
+  Grid,
   Paper,
   Step,
   StepLabel,
@@ -71,8 +72,8 @@ const StepperPage = () => {
       <Box
         className="main_outer_box_widget"
         sx={{
-          maxWidth: "1000px",
-          minWidth: "1000px",
+          maxWidth: "1100px",
+          minWidth: "1100px",
           my: 2,
         }}
       >
@@ -89,54 +90,84 @@ const StepperPage = () => {
               my: 4,
             }}
           >
-            <Stepper activeStep={activeStep} alternativeLabel>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>
-                    <Typography color="primary">{label}</Typography>
-                  </StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-          </Box>
-
-          <Box>
-            {activeStep === 0 && (
-              <Device
-                changeStep={changeStep}
-                device={device}
-                setDevice={setDevice}
-                setModels={setModels}
-              />
-            )}
-            {activeStep === 1 && models.length > 0 && (
-              <Models
-                setSelectedModel={setSelectedModel}
-                models={models}
-                changeStep={changeStep}
-                selectedModel={selectedModel}
-                setIssues={setIssues}
-              />
-            )}
-            {activeStep === 2 && issues.length > 0 && (
-              <Issues
-                changeStep={changeStep}
-                issues={issues}
-                selectedIssue={selectedIssue}
-                setSelectedIssue={setSelectedIssue}
-              />
-            )}
-            {activeStep === 4 && (
-              <Quote
-                changeStep={changeStep}
-                onSubmit={onSubmit}
-                onInputChange={onInputChange}
-                formData={formData}
-                error={error}
-                device={device}
-                selectedIssue={selectedIssue}
-              />
-            )}
+            <Grid container spacing={3}>
+              <Grid
+                item
+                xs={12}
+                md={1.8}
+                className="stepper_grid_widget_big_screen"
+              >
+                <Stepper
+                  className="steppr_class_custom"
+                  activeStep={activeStep}
+                  orientation="vertical"
+                >
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>
+                        <Typography color="primary">{label}</Typography>
+                      </StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                md={1.5}
+                className="stepper_grid_widget_small_screen"
+              >
+                <Stepper activeStep={activeStep} alternativeLabel>
+                  {steps.map((label) => (
+                    <Step key={label}>
+                      <StepLabel>
+                        <Typography color="primary">{label}</Typography>
+                      </StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              </Grid>
+              <Grid item md={10.2} xs={12}>
+                <Box>
+                  {activeStep === 0 && (
+                    <Device
+                      changeStep={changeStep}
+                      device={device}
+                      setDevice={setDevice}
+                      setModels={setModels}
+                    />
+                  )}
+                  {activeStep === 1 && models.length > 0 && (
+                    <Models
+                      setSelectedModel={setSelectedModel}
+                      models={models}
+                      changeStep={changeStep}
+                      selectedModel={selectedModel}
+                      setIssues={setIssues}
+                    />
+                  )}
+                  {activeStep === 2 && issues.length > 0 && (
+                    <Issues
+                      changeStep={changeStep}
+                      issues={issues}
+                      selectedIssue={selectedIssue}
+                      setSelectedIssue={setSelectedIssue}
+                    />
+                  )}
+                  {activeStep === 4 && (
+                    <Quote
+                      changeStep={changeStep}
+                      onSubmit={onSubmit}
+                      onInputChange={onInputChange}
+                      formData={formData}
+                      error={error}
+                      device={device}
+                      selectedIssue={selectedIssue}
+                    />
+                  )}
+                </Box>
+              </Grid>
+            </Grid>
           </Box>
         </Paper>
       </Box>
