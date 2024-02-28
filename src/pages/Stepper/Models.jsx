@@ -32,7 +32,7 @@ const Models = ({
     <Box>
       <Grid container spacing={2}>
         {models.map((elem) => (
-          <Grid item xs={12} md={3} key={elem.id}>
+          <Grid item xs={12} md={4} key={elem.id}>
             <Box
               sx={{
                 width: "100%",
