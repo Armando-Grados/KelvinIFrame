@@ -38,21 +38,10 @@ const Models = ({
                 width: "100%",
                 height: "100%",
                 minHeight: "250px",
-                cursor: "pointer",
-                borderRadius: "30px",
-                background: "#fff",
-                boxShadow: "6px 6px 10px rgba(0,0,0,.038)",
-                transition: "all 0.5 ease-out",
-                border:
-                  selectedModel === elem.lebel
-                    ? `2px solid ${theme.palette.primary.main} !important`
-                    : "",
-                "&:hover": {
-                  transition: "all 0.5 ease-out",
-                  border: `2px solid ${theme.palette.primary.main} !important`,
-                },
               }}
-              className="flex_center_display"
+              className={`flex_center_display card_hover_color ${
+                selectedModel === elem.lebel && "card_active_class"
+              }`}
               onClick={() => onItemClick(elem.id)}
             >
               <Box sx={{ p: 2 }}>
@@ -79,7 +68,7 @@ const Models = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          mt: 2,
+          mt: 4,
         }}
       >
         <Button className="btn" onClick={onBack} variant="contained">

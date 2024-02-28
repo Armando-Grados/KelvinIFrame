@@ -20,11 +20,29 @@ body * {
   box-shadow: none !important;
   color: white !important;
   text-transform: none !important;
+  padding: 10px 40px !important;
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s !important;
+}
+
+.btn:hover {
+  background-color: #000000 !important;
+  top: -10px;
 }
 
 .react-tel-input {
   input {
     width: 100% !important;
+  }
+  .form-control{
+    padding: 14.5px 14px 14.5px 58px !important;
+    border-color: black;
+    box-shadow: none;
+  }
+  .form-control:focus{
+    border-color: #bb0b0b !important;
+    /* box-shadow: 0 0 0 1px #bb0b0b !important; */
   }
 }
 
@@ -49,7 +67,7 @@ body * {
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
-  background-color: #5fbb4c;
+  background-color: #bb0b0b;
 }
 
 .right_quote {
@@ -62,21 +80,49 @@ body * {
   display: block;
   width: 124px;
   height: 3px;
-  background-color: #5fbb4c;
+  background-color: #bb0b0b;
   position: absolute;
   left: 0;
   bottom: 0;
 }
 
+.main_outer_box_widget {
+  max-width: 1000px;
+  min-width: 1000px;
+}
 
-.MuiStep-root{
-  .MuiStepIcon-text{
+.MuiStep-root {
+  .MuiStepIcon-text {
     fill: white !important;
   }
-  .MuiStepLabel-label{
-    p{
+  .MuiStepLabel-label {
+    p {
       font-weight: bold !important;
     }
+  }
+}
+
+.card_hover_color {
+  border-radius: 1rem;
+  background-color: #fff;
+  /* // boxShadow: "6px 6px 10px rgba(0,0,0,.038)", */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.card_hover_color:hover {
+  /* // border: `2px solid ${theme.palette.primary.main} !important`, */
+  border: 1px solid #ccc !important;
+  box-shadow: 5px 5px 0px 0px #bb0b0b !important;
+  transition: all 0.5 ease-out;
+}
+.card_active_class {
+  border: 2px solid #ccc !important;
+  box-shadow: 5px 5px 0px 0px #bb0b0b !important;
+}
+
+@media (max-width: 800px) {
+  .main_outer_box_widget {
+    min-width: auto !important;
   }
 }
 

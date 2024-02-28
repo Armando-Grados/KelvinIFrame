@@ -69,6 +69,7 @@ const StepperPage = () => {
   return (
     <div className="flex_center_display">
       <Box
+        className="main_outer_box_widget"
         sx={{
           maxWidth: "1000px",
           minWidth: "1000px",

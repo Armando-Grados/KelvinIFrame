@@ -66,20 +66,11 @@ const Issues = ({ changeStep, selectedIssue, setSelectedIssue, issues }) => {
                 width: "100%",
                 height: "100%",
                 minHeight: "250px",
-                cursor: "pointer",
-                borderRadius: "30px",
-                background: "#fff",
-                boxShadow: "6px 6px 10px rgba(0,0,0,.038)",
-                transition: "all 0.5 ease-out",
-                border: selectedIssue.some((e) => e.lebel === elem.lebel)
-                  ? `2px solid ${theme.palette.primary.main} !important`
-                  : "",
-                "&:hover": {
-                  transition: "all 0.5 ease-out",
-                  border: `2px solid ${theme.palette.primary.main} !important`,
-                },
               }}
-              className="flex_center_display"
+              className={`flex_center_display card_hover_color ${
+                selectedIssue.some((e) => e.lebel === elem.lebel) &&
+                "card_active_class"
+              }`}
               onClick={() => onItemClick(elem.id)}
             >
               <Box sx={{ p: 2 }}>
@@ -109,7 +100,7 @@ const Issues = ({ changeStep, selectedIssue, setSelectedIssue, issues }) => {
         className="btn"
         onClick={onBack}
         variant="contained"
-        sx={{ mt: 2 }}
+        sx={{ mt: 4 }}
       >
         Back
       </Button>

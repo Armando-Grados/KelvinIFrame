@@ -13,7 +13,7 @@ import {
 import React, { Fragment } from "react";
 import EastIcon from "@mui/icons-material/East";
 import PhoneInput from "react-phone-input-2";
-import { startsWith } from "../../utils/utilityFunctions";
+// import { startsWith } from "../../utils/utilityFunctions";
 
 const Quote = ({
   changeStep,
@@ -36,9 +36,9 @@ const Quote = ({
           <Grid item xs={12} md={8}>
             <Box
               sx={{
-                px: 6,
+                px: { xs: 1, md: 6 },
                 width: "100%",
-                borderRight: "1px solid #c0bdbd",
+                borderRight: { xs: "none", md: "1px solid #c0bdbd" },
                 height: "100%",
               }}
             >
@@ -86,6 +86,7 @@ const Quote = ({
                 </FormControl>
 
                 <TextField
+                  label="Enter your full name"
                   error={error && formData.name.trim().length === 0}
                   value={formData.name}
                   onChange={(e) => onInputChange("name", e.target.value)}
@@ -102,6 +103,7 @@ const Quote = ({
                   fullWidth
                 />
                 <TextField
+                  label="Enter your email"
                   error={error && formData.email.trim().length === 0}
                   value={formData.email}
                   onChange={(e) => onInputChange("email", e.target.value)}
@@ -133,8 +135,9 @@ const Quote = ({
                     //     );
                     //   });
                     // }}
-                    country={"pe"}
-                    preferredCountries={["in", "pe"]}
+                    autoFormat
+                    country={"us"}
+                    preferredCountries={["in", "pe", "us"]}
                     value={formData.phone}
                     onChange={(phone) => {
                       onInputChange("phone", phone);
@@ -188,7 +191,7 @@ const Quote = ({
           <Grid item xs={12} md={4}>
             <Box
               sx={{
-                px: 4,
+                px: { xs: 1, md: 4 },
               }}
             >
               <Typography
