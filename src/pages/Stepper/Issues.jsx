@@ -2,7 +2,7 @@ import { Box, Button, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
 
 const Issues = ({ changeStep, selectedIssue, setSelectedIssue, issues }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const onContinue = () => {
     changeStep(4);
   };

@@ -1,6 +1,10 @@
 import {
   Box,
   Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
   FormControl,
   FormControlLabel,
   // FormLabel,
@@ -13,6 +17,8 @@ import {
 import React, { Fragment } from "react";
 import EastIcon from "@mui/icons-material/East";
 import PhoneInput from "react-phone-input-2";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import { openUrlInNewTab } from "../../utils/utilityFunctions";
 // import { startsWith } from "../../utils/utilityFunctions";
 
 const Quote = ({
@@ -191,7 +197,7 @@ const Quote = ({
           <Grid item xs={12} md={4}>
             <Box
               sx={{
-                px: { xs: 1, md: 4 },
+                px: { xs: 1, md: 1.5 },
               }}
             >
               <Typography
@@ -273,6 +279,7 @@ const Quote = ({
               >
                 Selected Store
               </Typography>
+              <LocationBox />
             </Box>
           </Grid>
         </Grid>
@@ -298,6 +305,101 @@ const Quote = ({
           Continue
         </Button> */}
       </Box>
+    </Box>
+  );
+};
+
+const LocationBox = () => {
+  return (
+    <Box>
+      <Card
+        className="card_location_widget"
+        sx={{
+          mt: 2,
+        }}
+      >
+        <CardMedia
+          component="img"
+          // height="194"
+          image="/images/loc/loc1.jpg"
+          alt="NORCROSS GA"
+        />
+        <CardContent
+          sx={{
+            padding: "8px 16px",
+          }}
+        >
+          <Typography
+            color="primary"
+            sx={{
+              fontWeight: "bold",
+            }}
+          >
+            NORCROSS GA
+          </Typography>
+          <Typography sx={{ fontSize: 14 }}>
+            1210 Rockbridge Rd Norcross GA 30093
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            fullWidth
+            variant="contained"
+            className="btn"
+            endIcon={<MyLocationIcon />}
+            color="primary"
+            onClick={() =>
+              openUrlInNewTab("https://maps.app.goo.gl/AUbJoHPWa4zRVkpSA")
+            }
+          >
+            Visit on Map
+          </Button>
+        </CardActions>
+      </Card>
+      <Card
+        className="card_location_widget"
+        sx={{
+          mt: 2,
+        }}
+      >
+        <CardMedia
+          component="img"
+          // height="194"
+          image="/images/loc/loc1.jpg"
+          alt="NORCROSS GA"
+        />
+        <CardContent
+          sx={{
+            padding: "8px 16px",
+          }}
+        >
+          <Typography
+            color="primary"
+            sx={{
+              fontWeight: "bold",
+            }}
+          >
+            MARIETTA, GA
+          </Typography>
+          <Typography sx={{ fontSize: 14 }}>
+            431 Pat Mell RD SE Smyrna GA 30080
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            fullWidth
+            variant="contained"
+            className="btn"
+            endIcon={<MyLocationIcon />}
+            color="primary"
+            onClick={() =>
+              openUrlInNewTab("https://maps.app.goo.gl/6SjwZpDihxxPe4547")
+            }
+          >
+            Visit on Map
+          </Button>
+        </CardActions>
+      </Card>
     </Box>
   );
 };

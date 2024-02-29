@@ -31,8 +31,6 @@ body * {
   top: -10px;
 }
 
-
-
 .cust_img_box {
   max-width: 130px;
 }
@@ -78,7 +76,6 @@ body * {
   min-width: 1000px;
 }
 
-
 /* mui card  */
 .card_hover_color {
   border-radius: 1rem;
@@ -87,6 +84,12 @@ body * {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
+
+.card_location_widget {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5) !important;
+   border-radius: .8rem !important;
+}
+
 .card_hover_color:hover {
   /* border: `2px solid ${theme.palette.primary.main} !important`, */
   border: 1px solid #ccc !important;
@@ -97,7 +100,6 @@ body * {
   border: 2px solid #ccc !important;
   box-shadow: 5px 5px 0px 0px #bb0b0b !important;
 }
-
 
 /* stepper  */
 .MuiStep-root {
@@ -122,7 +124,6 @@ body * {
 .stepper_grid_widget_small_screen {
   display: none;
 }
-
 
 /* tel input  */
 .react-tel-input {

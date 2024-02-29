@@ -80,7 +80,7 @@ const StepperPage = () => {
         <Paper
           elevation={2}
           sx={{
-            p: 4,
+            p: 2,
             borderRadius: "20px",
           }}
         >
@@ -94,7 +94,7 @@ const StepperPage = () => {
               <Grid
                 item
                 xs={12}
-                md={1.8}
+                md={1.5}
                 className="stepper_grid_widget_big_screen"
               >
                 <Stepper
@@ -127,7 +127,7 @@ const StepperPage = () => {
                   ))}
                 </Stepper>
               </Grid>
-              <Grid item md={10.2} xs={12}>
+              <Grid item md={10.5} xs={12}>
                 <Box>
                   {activeStep === 0 && (
                     <Device

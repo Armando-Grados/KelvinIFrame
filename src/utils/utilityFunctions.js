@@ -4,3 +4,10 @@ export const startsWith = (str, target) => {
   }
   return true;
 };
+
+export const openUrlInNewTab = (url, target = "_blank") => {
+  const newTab = window.open(url, target);
+  if (newTab) {
+    newTab.focus();
+  }
+};
