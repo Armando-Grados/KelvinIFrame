@@ -179,7 +179,7 @@ const Taglines = ({ activeStep, device }) => {
   return (
     <Fragment>
       <Typography align="center" sx={{ fontSize: 30, fontWeight: "bolder" }}>
-        Get Instant Price Quote
+        Let us take care of you
       </Typography>
       <Typography
         align="center"
