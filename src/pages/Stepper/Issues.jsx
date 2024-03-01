@@ -1,15 +1,20 @@
-import { Box, Button, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
+import { uniqueId } from "../../utils/utilityFunctions";
 
-const Issues = ({ changeStep, selectedIssue, setSelectedIssue, issues }) => {
-  // const theme = useTheme();
+const Issues = ({
+  changeStep,
+  selectedIssue,
+  setSelectedIssue,
+  issues,
+  onBreadCumbListChange,
+}) => {
   const onContinue = () => {
+    onBreadCumbListChange({
+      title: "Issues",
+      id: uniqueId(),
+    });
     changeStep(4);
-  };
-
-  const onBack = () => {
-    setSelectedIssue([]);
-    changeStep(1);
   };
 
   const onItemClick = (id) => {
@@ -95,15 +100,6 @@ const Issues = ({ changeStep, selectedIssue, setSelectedIssue, issues }) => {
           </Grid>
         ))}
       </Grid>
-
-      <Button
-        className="btn"
-        onClick={onBack}
-        variant="contained"
-        sx={{ mt: 4 }}
-      >
-        Back
-      </Button>
     </Box>
   );
 };

@@ -1,30 +1,39 @@
-import { Box, Button, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import { deviceData } from "../../utils/data";
+import { widgetData } from "../../utils/widgetData";
+import { uniqueId } from "../../utils/utilityFunctions";
 
-const Device = ({ changeStep, device, setDevice, setModels }) => {
-  const theme = useTheme();
-
+const Device = ({
+  changeStep,
+  device,
+  setDevice,
+  setModels,
+  onBreadCumbListChange,
+  setIssues,
+}) => {
   const onDeviceClick = (id) => {
-    const item = deviceData.find((e) => e.id === id);
+    const item = widgetData.find((e) => e.id === id);
     if (item) {
       setDevice(item.lebel);
+      onBreadCumbListChange({
+        title: item.lebel,
+        id: uniqueId(),
+      });
       if (item?.models?.length > 0) {
         setModels(item.models);
-        onContinue();
+        changeStep(1);
+      } else {
+        setIssues(item.issues);
+        changeStep(2);
       }
     }
   };
 
-  const onContinue = () => {
-    changeStep(1);
-  };
-
   return (
     <Box>
-      <Grid container spacing={2}>
-        {deviceData.map((elem) => (
-          <Grid item xs={12} md={4} key={elem.id}>
+      <Grid container spacing={5}>
+        {widgetData.map((elem) => (
+          <Grid item xs={12} md={3} key={elem.id}>
             <Box
               sx={{
                 width: "100%",
@@ -54,18 +63,8 @@ const Device = ({ changeStep, device, setDevice, setModels }) => {
           </Grid>
         ))}
       </Grid>
-      {/* <Button
-        className="btn"
-        onClick={onContinue}
-        disabled={device === ""}
-        variant="contained"
-        sx={{ mt: 2 }}
-      >
-        Continue
-      </Button> */}
     </Box>
   );
 };
 
 export default Device;
-

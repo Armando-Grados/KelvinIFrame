@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Grid,
   Paper,
   Step,
@@ -13,13 +14,15 @@ import Device from "./Device";
 import Models from "./Models";
 import Issues from "./Issues";
 import Quote from "./Quote";
-
-const steps = ["Device", "Model", "Issue", "Location", "Quote"];
+import BreadCumpView from "../../components/view/BreadCumpView";
 
 const StepperPage = () => {
   // const theme = useTheme();
 
+  // 0 = home, 1 = device, 2 = issue, 3 = location, 4 = quote
   const [activeStep, setActiveStep] = useState(0);
+
+  const [breadCumbsList, setBreadCumbList] = useState([]);
 
   const [models, setModels] = useState([]);
   const [issues, setIssues] = useState([]);
@@ -50,6 +53,46 @@ const StepperPage = () => {
 
   const changeStep = (val) => {
     setActiveStep(val);
+  };
+
+  const onBreadCumbListChange = (val = null) => {
+    if (val) {
+      const dummyList = [...breadCumbsList];
+      dummyList.push({
+        ...val,
+      });
+      setBreadCumbList(dummyList);
+    }
+  };
+
+  const onBackClick = () => {
+    const dummyList = [...breadCumbsList];
+    dummyList.pop();
+    setBreadCumbList(dummyList);
+
+    if (activeStep === 1) {
+      setModels([]);
+      setSelectedModel("");
+      setActiveStep((prev) => prev - 1);
+      return;
+    }
+    if (activeStep === 2 && models.length === 0) {
+      setIssues([]);
+      setSelectedIssue([]);
+      setActiveStep((prev) => prev - 2);
+      return;
+    }
+    if (activeStep === 2 && models.length !== 0) {
+      setIssues([]);
+      setSelectedIssue([]);
+      setActiveStep((prev) => prev - 1);
+      return;
+    }
+
+    if (activeStep === 4) {
+      setActiveStep((prev) => prev - 2);
+      return;
+    }
   };
 
   const printAll = () => {
@@ -87,87 +130,74 @@ const StepperPage = () => {
           <Taglines activeStep={activeStep} device={device} />
           <Box
             sx={{
-              my: 4,
+              mt: 4,
             }}
           >
-            <Grid container spacing={3}>
-              <Grid
-                item
-                xs={12}
-                md={1.5}
-                className="stepper_grid_widget_big_screen"
+            <Box>
+              {activeStep === 0 && (
+                <Device
+                  onBreadCumbListChange={onBreadCumbListChange}
+                  changeStep={changeStep}
+                  device={device}
+                  setDevice={setDevice}
+                  setModels={setModels}
+                  setIssues={setIssues}
+                />
+              )}
+
+              {activeStep === 1 && models.length > 0 && (
+                <Models
+                  setSelectedModel={setSelectedModel}
+                  models={models}
+                  changeStep={changeStep}
+                  selectedModel={selectedModel}
+                  setIssues={setIssues}
+                  onBreadCumbListChange={onBreadCumbListChange}
+                />
+              )}
+              {activeStep === 2 && issues.length > 0 && (
+                <Issues
+                  changeStep={changeStep}
+                  issues={issues}
+                  selectedIssue={selectedIssue}
+                  setSelectedIssue={setSelectedIssue}
+                  onBreadCumbListChange={onBreadCumbListChange}
+                />
+              )}
+              {/* {activeStep === 4 && (
+                <Quote
+                  changeStep={changeStep}
+                  onSubmit={onSubmit}
+                  onInputChange={onInputChange}
+                  formData={formData}
+                  error={error}
+                  device={device}
+                  selectedIssue={selectedIssue}
+                />
+              )} */}
+            </Box>
+
+            {breadCumbsList && breadCumbsList.length > 0 && (
+              <Box
+                sx={{
+                  mt: 2,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
               >
-                <Stepper
-                  className="steppr_class_custom"
-                  activeStep={activeStep}
-                  orientation="vertical"
-                >
-                  {steps.map((label) => (
-                    <Step key={label}>
-                      <StepLabel>
-                        <Typography color="primary">{label}</Typography>
-                      </StepLabel>
-                    </Step>
-                  ))}
-                </Stepper>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={1.5}
-                className="stepper_grid_widget_small_screen"
-              >
-                <Stepper activeStep={activeStep} alternativeLabel>
-                  {steps.map((label) => (
-                    <Step key={label}>
-                      <StepLabel>
-                        <Typography color="primary">{label}</Typography>
-                      </StepLabel>
-                    </Step>
-                  ))}
-                </Stepper>
-              </Grid>
-              <Grid item md={10.5} xs={12}>
                 <Box>
-                  {activeStep === 0 && (
-                    <Device
-                      changeStep={changeStep}
-                      device={device}
-                      setDevice={setDevice}
-                      setModels={setModels}
-                    />
-                  )}
-                  {activeStep === 1 && models.length > 0 && (
-                    <Models
-                      setSelectedModel={setSelectedModel}
-                      models={models}
-                      changeStep={changeStep}
-                      selectedModel={selectedModel}
-                      setIssues={setIssues}
-                    />
-                  )}
-                  {activeStep === 2 && issues.length > 0 && (
-                    <Issues
-                      changeStep={changeStep}
-                      issues={issues}
-                      selectedIssue={selectedIssue}
-                      setSelectedIssue={setSelectedIssue}
-                    />
-                  )}
-                  {activeStep === 4 && (
-                    <Quote
-                      changeStep={changeStep}
-                      onSubmit={onSubmit}
-                      onInputChange={onInputChange}
-                      formData={formData}
-                      error={error}
-                      device={device}
-                      selectedIssue={selectedIssue}
-                    />
-                  )}
+                  <BreadCumpView list={breadCumbsList} />
                 </Box>
-              </Grid>
-            </Grid>
+                <Button
+                  className="btn"
+                  onClick={onBackClick}
+                  variant="contained"
+                >
+                  Back
+                </Button>
+              </Box>
+            )}
           </Box>
         </Paper>
       </Box>

@@ -1,5 +1,6 @@
-import { Box, Button, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { uniqueId } from "../../utils/utilityFunctions";
 
 const Models = ({
   changeStep,
@@ -7,20 +8,19 @@ const Models = ({
   selectedModel,
   setSelectedModel,
   setIssues,
+  onBreadCumbListChange,
 }) => {
-  const theme = useTheme();
-
   const onItemClick = (id) => {
     const item = models.find((e) => e.id === id);
     if (item) {
       setSelectedModel(item.lebel);
       setIssues(item.issues);
-      onContinue();
+      onBreadCumbListChange({
+        title: item.lebel,
+        id: uniqueId(),
+      });
+      changeStep(2);
     }
-  };
-
-  const onContinue = () => {
-    changeStep(2);
   };
 
   const onBack = () => {
@@ -63,26 +63,6 @@ const Models = ({
           </Grid>
         ))}
       </Grid>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          mt: 4,
-        }}
-      >
-        <Button className="btn" onClick={onBack} variant="contained">
-          Back
-        </Button>
-        {/* <Button
-          className="btn"
-          onClick={() => changeStep(2)}
-          variant="contained"
-          disabled={selectedModel === ""}
-        >
-          Continue
-        </Button> */}
-      </Box>
     </Box>
   );
 };
