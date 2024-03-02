@@ -36,7 +36,8 @@ body * {
 }
 
 .cust_issue_img {
-  max-width: 60px;
+  max-width: 70px;
+  width: 70px;
 }
 
 .left_quote {
@@ -78,16 +79,21 @@ body * {
 
 /* mui card  */
 .card_hover_color {
-  border-radius: 1rem;
+  border-radius: 8px;
   background-color: #fff;
   /* boxShadow: "6px 6px 10px rgba(0,0,0,.038)", */
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  img {
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s !important;
+  }
 }
 
 .card_location_widget {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5) !important;
-   border-radius: .8rem !important;
+  border-radius: 8px !important;
 }
 
 .card_hover_color:hover {
@@ -95,6 +101,9 @@ body * {
   border: 1px solid #ccc !important;
   box-shadow: 5px 5px 0px 0px #bb0b0b !important;
   transition: all 0.5 ease-out;
+  img {
+    top: -10px;
+  }
 }
 .card_active_class {
   border: 2px solid #ccc !important;

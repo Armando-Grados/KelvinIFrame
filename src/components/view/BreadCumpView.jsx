@@ -8,7 +8,7 @@ const BreadCumpView = ({ list }) => {
       separator={<NavigateNextIcon color="primary" fontSize="small" />}
     >
       {list.map((item) => (
-        <Typography color="primary" key={item.id}>
+        <Typography color="primary" key={item.id} sx={{ fontSize: 18 }}>
           {item.title}
         </Typography>
       ))}

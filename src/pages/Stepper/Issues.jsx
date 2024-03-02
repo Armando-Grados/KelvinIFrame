@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { uniqueId } from "../../utils/utilityFunctions";
+import AddTaskIcon from "@mui/icons-material/AddTask";
 
 const Issues = ({
   changeStep,
@@ -50,7 +51,8 @@ const Issues = ({
           alignItems: "center",
           justifyContent: "center",
           gap: 2,
-          my: 2,
+          mt: 2,
+          mb: 4,
         }}
       >
         <Button
@@ -63,7 +65,7 @@ const Issues = ({
         </Button>
       </Box>
 
-      <Grid container spacing={2}>
+      <Grid container spacing={5}>
         {issues.map((elem) => (
           <Grid item xs={12} md={3} key={elem.id}>
             <Box
@@ -71,6 +73,7 @@ const Issues = ({
                 width: "100%",
                 height: "100%",
                 minHeight: "250px",
+                position: "relative",
               }}
               className={`flex_center_display card_hover_color ${
                 selectedIssue.some((e) => e.lebel === elem.lebel) &&
@@ -89,12 +92,27 @@ const Issues = ({
                 <Typography
                   align="center"
                   sx={{
-                    mt: 0.5,
+                    mt: 1,
                     fontSize: "20px",
                   }}
                 >
                   {elem.lebel}
                 </Typography>
+                {selectedIssue.some((e) => e.lebel === elem.lebel) && (
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: "5%",
+                      left: "5%",
+                    }}
+                  >
+                    <AddTaskIcon
+                      // sx={{ color: "green" }}
+                      color="primary"
+                      // fontSize="medium"
+                    />
+                  </Box>
+                )}
               </Box>
             </Box>
           </Grid>

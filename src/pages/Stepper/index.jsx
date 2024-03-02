@@ -1,11 +1,12 @@
 import {
   Box,
   Button,
-  Grid,
+  Divider,
+  // Grid,
   Paper,
-  Step,
-  StepLabel,
-  Stepper,
+  // Step,
+  // StepLabel,
+  // Stepper,
   Typography,
   // useTheme,
 } from "@mui/material";
@@ -123,17 +124,17 @@ const StepperPage = () => {
         <Paper
           elevation={2}
           sx={{
-            p: 2,
+            p: 4,
             borderRadius: "20px",
           }}
         >
-          <Taglines activeStep={activeStep} device={device} />
+          <Taglines activeStep={activeStep} />
           <Box
             sx={{
               mt: 4,
             }}
           >
-            <Box>
+            <Box sx={{ mb: 2 }}>
               {activeStep === 0 && (
                 <Device
                   onBreadCumbListChange={onBreadCumbListChange}
@@ -164,9 +165,8 @@ const StepperPage = () => {
                   onBreadCumbListChange={onBreadCumbListChange}
                 />
               )}
-              {/* {activeStep === 4 && (
+              {activeStep === 4 && (
                 <Quote
-                  changeStep={changeStep}
                   onSubmit={onSubmit}
                   onInputChange={onInputChange}
                   formData={formData}
@@ -174,29 +174,37 @@ const StepperPage = () => {
                   device={device}
                   selectedIssue={selectedIssue}
                 />
-              )} */}
+              )}
             </Box>
 
             {breadCumbsList && breadCumbsList.length > 0 && (
-              <Box
-                sx={{
-                  mt: 2,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Box>
-                  <BreadCumpView list={breadCumbsList} />
-                </Box>
-                <Button
-                  className="btn"
-                  onClick={onBackClick}
-                  variant="contained"
+              <Fragment>
+                <Divider />
+                <Box
+                  sx={{
+                    mt: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: { xs: 2, md: 1 },
+                    flexDirection: { xs: "column", md: "row" },
+                  }}
                 >
-                  Back
-                </Button>
-              </Box>
+                  <Box>
+                    <BreadCumpView list={breadCumbsList} />
+                  </Box>
+                  <Button
+                    className="btn"
+                    onClick={onBackClick}
+                    variant="contained"
+                    sx={{
+                      width: { xs: "100%", md: "auto" },
+                    }}
+                  >
+                    Back
+                  </Button>
+                </Box>
+              </Fragment>
             )}
           </Box>
         </Paper>
@@ -205,11 +213,13 @@ const StepperPage = () => {
   );
 };
 
-const Taglines = ({ activeStep, device }) => {
+const Taglines = ({ activeStep }) => {
   return (
     <Fragment>
       <Typography align="center" sx={{ fontSize: 30, fontWeight: "bolder" }}>
-        Let us take care of you
+        {activeStep === 0 && "Which device would you like to fix"}
+        {activeStep === 1 && "Please select the modal"}
+        {activeStep === 2 && "Let us take care of you"}
       </Typography>
       <Typography
         align="center"
@@ -218,7 +228,7 @@ const Taglines = ({ activeStep, device }) => {
         }}
       >
         {activeStep === 0 && "Select your device"}
-        {activeStep === 1 && `${device} > Select your device model`}
+        {/* {activeStep === 1 && `${device} > Select your device model`} */}
         {activeStep === 2 && `Select your repair issues`}
       </Typography>
     </Fragment>

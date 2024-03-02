@@ -23,14 +23,9 @@ const Models = ({
     }
   };
 
-  const onBack = () => {
-    setSelectedModel("");
-    changeStep(0);
-  };
-
   return (
     <Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={5}>
         {models.map((elem) => (
           <Grid item xs={12} md={4} key={elem.id}>
             <Box
