@@ -33,10 +33,10 @@ const StepperPage = () => {
   const [selectedIssue, setSelectedIssue] = useState([]);
 
   const [formData, setFormData] = useState({
-    platform: "",
+    // platform: "",
     name: "",
     email: "",
-    message: "",
+    // message: "",
     phone: "",
   });
 
@@ -219,7 +219,7 @@ const Taglines = ({ activeStep }) => {
       <Typography align="center" sx={{ fontSize: 30, fontWeight: "bolder" }}>
         {activeStep === 0 && "Which device would you like to fix"}
         {activeStep === 1 && "Please select the modal"}
-        {activeStep === 2 && "Let us take care of you"}
+        {activeStep === 2 && "What's wrong with it?"}
       </Typography>
       <Typography
         align="center"
@@ -229,7 +229,7 @@ const Taglines = ({ activeStep }) => {
       >
         {activeStep === 0 && "Select your device"}
         {/* {activeStep === 1 && `${device} > Select your device model`} */}
-        {activeStep === 2 && `Select your repair issues`}
+        {activeStep === 2 && `Things happen - we've seen it all.`}
       </Typography>
     </Fragment>
   );

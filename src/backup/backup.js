@@ -196,3 +196,126 @@
 // };
 
 // export default StepperPage;
+
+//******** quote */
+
+// {
+//   <textarea
+//   rows={4}
+//   // value={formData.msg}
+//   // onChange={(e) => onInputChange("msg", e.target.value)}
+//   style={{
+//     width: "100%",
+//     padding: "12px",
+//     fontSize: "16px",
+//     // border: "#000000de",
+//     borderRadius: "6px",
+//     marginTop: "14px",
+//   }}
+//   placeholder="Message (optional)"
+// />
+// }
+
+// {
+//   <FormControl size="small">
+//     <RadioGroup
+//       error={error && formData.platform.trim().length === 0}
+//       row
+//       aria-labelledby="quote_platform"
+//       name="platform"
+//       value={formData.platform}
+//       onChange={(e) => onInputChange("platform", e.target.value)}
+//     >
+//       <FormControlLabel
+//         value="SMS"
+//         control={<Radio />}
+//         label="SMS text (Instant)"
+//       />
+//       <FormControlLabel
+//         value="Email"
+//         control={<Radio />}
+//         label="Email (Instant)"
+//       />
+//       <FormControlLabel
+//         value="Phone"
+//         control={<Radio />}
+//         label="Phone call"
+//       />
+//     </RadioGroup>
+//   </FormControl>
+// }
+//  <Grid xs={3.5} item>
+//                 <Typography sx={{ fontWeight: "bold" }}>Warranty: </Typography>
+//               </Grid>
+//               <Grid xs={8.5} item>
+//                 <Typography>Life-time warranty</Typography>
+//               </Grid>
+
+// ***** issues */
+// <Grid container spacing={5}>
+//   {issues.map((elem) => (
+//     <Grid item xs={12} md={3} key={elem.id}>
+//       <Box
+//         sx={{
+//           width: "100%",
+//           height: "100%",
+//           minHeight: "250px",
+//           position: "relative",
+//         }}
+//         className={`flex_center_display card_hover_color ${
+//           selectedIssue.some((e) => e.lebel === elem.lebel) &&
+//           "card_active_class"
+//         }`}
+//         onClick={() => onItemClick(elem.id)}
+//       >
+//         <Box sx={{ p: 2 }}>
+//           <Box className="flex_center_display">
+//             <img src={elem.img_src} alt="img" className="cust_issue_img" />
+//           </Box>
+//           <Typography
+//             align="center"
+//             sx={{
+//               mt: 1,
+//               fontSize: "20px",
+//             }}
+//           >
+//             {elem.lebel}
+//           </Typography>
+//           {selectedIssue.some((e) => e.lebel === elem.lebel) && (
+//             <Box
+//               sx={{
+//                 position: "absolute",
+//                 top: "5%",
+//                 left: "5%",
+//               }}
+//             >
+//               <AddTaskIcon
+//                 // sx={{ color: "green" }}
+//                 color="primary"
+//                 // fontSize="medium"
+//               />
+//             </Box>
+//           )}
+//         </Box>
+//       </Box>
+//     </Grid>
+//   ))}
+// </Grid>;
+//  const onItemClick = (id) => {
+//    const item = issues.find((e) => e.id === id);
+//    if (item) {
+//      // console.log(item);
+//      const dummyArr = [...selectedIssue];
+//      const dummyIndex = dummyArr.findIndex((e) => e.id === item.id);
+//      if (dummyIndex >= 0) {
+//        // item exist so need to remove
+//        dummyArr.splice(dummyIndex, 1);
+//        setSelectedIssue(dummyArr);
+//      } else {
+//        dummyArr.push({
+//          ...item,
+//        });
+//      }
+//      setSelectedIssue(dummyArr);
+//    }
+//  };

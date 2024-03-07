@@ -5,12 +5,12 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  FormControl,
-  FormControlLabel,
+  // FormControl,
+  // FormControlLabel,
   // FormLabel,
   Grid,
-  Radio,
-  RadioGroup,
+  // Radio,
+  // RadioGroup,
   TextField,
   Typography,
 } from "@mui/material";
@@ -19,6 +19,7 @@ import EastIcon from "@mui/icons-material/East";
 import PhoneInput from "react-phone-input-2";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { openUrlInNewTab } from "../../utils/utilityFunctions";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
 // import { startsWith } from "../../utils/utilityFunctions";
 
 const Quote = ({
@@ -114,25 +115,60 @@ const Quote = ({
                   {selectedIssue.map((elem) => elem.lebel).join(", ")}
                 </Typography>
               </Grid>
-              <Grid xs={3.5} item>
-                <Typography sx={{ fontWeight: "bold" }}>Warranty: </Typography>
-              </Grid>
-              <Grid xs={8.5} item>
-                <Typography>Life-time warranty</Typography>
-              </Grid>
 
               <Grid xs={12} item>
                 <Typography sx={{ fontWeight: "bold" }}>
-                  Description:{" "}
+                  Descriptions:
                 </Typography>
-                <Typography>
-                  {`Most ${
-                    device === "Something else" ? "device" : device
-                  } repairs are completed in an hour or
-                    two. We use premium parts and our technicians are expert
-                    trained. We also price match! Find another local shop with
-                    better pricing, we'll match it!`}
-                </Typography>
+                <Box
+                  sx={{
+                    mt: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "3px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: "8px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <DoneAllIcon sx={{ color: "green" }} />
+                    <Typography>Lifetime guarantee</Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: "8px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <DoneAllIcon sx={{ color: "green" }} />
+                    <Typography>Free diagnostic</Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: "8px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <DoneAllIcon sx={{ color: "green" }} />
+                    <Typography>Low Price guaranteed</Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: "8px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <DoneAllIcon sx={{ color: "green" }} />
+                    <Typography>Expert repairs</Typography>
+                  </Box>
+                </Box>
               </Grid>
             </Grid>
 
@@ -153,33 +189,6 @@ const Quote = ({
 const FormView = ({ error, formData, onInputChange, onSubmit }) => {
   return (
     <Fragment>
-      <FormControl size="small">
-        <RadioGroup
-          error={error && formData.platform.trim().length === 0}
-          row
-          aria-labelledby="quote_platform"
-          name="platform"
-          value={formData.platform}
-          onChange={(e) => onInputChange("platform", e.target.value)}
-        >
-          <FormControlLabel
-            value="SMS"
-            control={<Radio />}
-            label="SMS text (Instant)"
-          />
-          <FormControlLabel
-            value="Email"
-            control={<Radio />}
-            label="Email (Instant)"
-          />
-          <FormControlLabel
-            value="Phone"
-            control={<Radio />}
-            label="Phone call"
-          />
-        </RadioGroup>
-      </FormControl>
-
       <TextField
         label="Enter your full name"
         error={error && formData.name.trim().length === 0}
@@ -232,7 +241,8 @@ const FormView = ({ error, formData, onInputChange, onSubmit }) => {
           // }}
           autoFormat
           country={"us"}
-          preferredCountries={["in", "pe", "us"]}
+          // preferredCountries={["in", "pe", "us"]}
+          onlyCountries={["us"]}
           value={formData.phone}
           onChange={(phone) => {
             onInputChange("phone", phone);
@@ -244,20 +254,6 @@ const FormView = ({ error, formData, onInputChange, onSubmit }) => {
         />
       </Box>
 
-      <textarea
-        rows={4}
-        // value={formData.msg}
-        // onChange={(e) => onInputChange("msg", e.target.value)}
-        style={{
-          width: "100%",
-          padding: "12px",
-          fontSize: "16px",
-          // border: "#000000de",
-          borderRadius: "6px",
-          marginTop: "14px",
-        }}
-        placeholder="Message (optional)"
-      />
       <Box className="flex_center_display">
         <Button
           sx={{
