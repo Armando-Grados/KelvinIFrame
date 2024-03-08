@@ -319,3 +319,32 @@
 //      setSelectedIssue(dummyArr);
 //    }
 //  };
+
+//*****models */
+// <Box
+//   sx={{
+//     width: "100%",
+//     height: "100%",
+//     minHeight: "250px",
+//   }}
+//   className={`flex_center_display card_hover_color ${
+//     selectedModel === elem.lebel && "card_active_class"
+//   }`}
+//   onClick={() => onItemClick(elem.id)}
+// >
+//   <Box sx={{ p: 2 }}>
+//     <Box className="flex_center_display">
+//       <img src={elem.img_src} alt="img" className="cust_img_box" />
+//     </Box>
+//     <Typography
+//       align="center"
+//       sx={{
+//         mt: 0.5,
+//         fontSize: "20px",
+//         textWrap: "wrap",
+//       }}
+//     >
+//       {elem.lebel}
+//     </Typography>
+//   </Box>
+// </Box>;

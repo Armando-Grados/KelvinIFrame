@@ -1,5 +1,13 @@
-import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
+import {
+  Box,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
 import { uniqueId } from "../../utils/utilityFunctions";
 
 const Models = ({
@@ -10,53 +18,60 @@ const Models = ({
   setIssues,
   onBreadCumbListChange,
 }) => {
-  const onItemClick = (id) => {
-    const item = models.find((e) => e.id === id);
+  const [devices, setDevices] = useState([]);
+  const [selectVal, setSelectVal] = useState("");
+
+  const onBrandChange = (e) => {
+    const item = models.find((elem) => elem.id === +e.target.value);
     if (item) {
       setSelectedModel(item.lebel);
+      setSelectVal(`${item.id}`);
       setIssues(item.issues);
       onBreadCumbListChange({
         title: item.lebel,
         id: uniqueId(),
       });
-      changeStep(2);
+      if (item?.devices.length > 0) {
+        setDevices(item.devices);
+      } else {
+        changeStep(2);
+      }
     }
+  };
+
+  const onDevicechange = (e) => {
+    changeStep(2);
   };
 
   return (
     <Box>
       <Grid container spacing={5}>
-        {models.map((elem) => (
-          <Grid item xs={12} md={4} key={elem.id}>
-            <Box
-              sx={{
-                width: "100%",
-                height: "100%",
-                minHeight: "250px",
-              }}
-              className={`flex_center_display card_hover_color ${
-                selectedModel === elem.lebel && "card_active_class"
-              }`}
-              onClick={() => onItemClick(elem.id)}
-            >
-              <Box sx={{ p: 2 }}>
-                <Box className="flex_center_display">
-                  <img src={elem.img_src} alt="img" className="cust_img_box" />
-                </Box>
-                <Typography
-                  align="center"
-                  sx={{
-                    mt: 0.5,
-                    fontSize: "20px",
-                    textWrap: "wrap",
-                  }}
-                >
-                  {elem.lebel}
-                </Typography>
-              </Box>
-            </Box>
+        <Grid item xs={12}>
+          <FormControl fullWidth variant="filled">
+            <InputLabel>Brands</InputLabel>
+            <Select value={selectVal} onChange={onBrandChange}>
+              {models.map((item) => (
+                <MenuItem value={item.id} key={item.id}>
+                  {item.lebel}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+        {selectVal !== "" && (
+          <Grid item xs={12}>
+            <FormControl fullWidth variant="filled">
+              <InputLabel>Devices</InputLabel>
+              <Select onChange={onDevicechange}>
+                {devices.map((item) => (
+                  <MenuItem value={item} key={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
-        ))}
+        )}
       </Grid>
     </Box>
   );

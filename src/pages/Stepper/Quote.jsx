@@ -176,7 +176,7 @@ const Quote = ({
               className="right_quote"
               sx={{ fontWeight: "bold", fontSize: "18px", mt: 3 }}
             >
-              Selected Store
+              Our location(s)
             </Typography>
             <LocationBox />
           </Box>
