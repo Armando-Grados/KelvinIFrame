@@ -132,6 +132,9 @@ const StepperPage = () => {
           <Box
             sx={{
               mt: 4,
+              maxHeight: "350px",
+              overflowY: "scroll",
+              pr: 0.4,
             }}
           >
             <Box sx={{ mb: 2 }}>
@@ -172,6 +175,7 @@ const StepperPage = () => {
                   formData={formData}
                   error={error}
                   device={device}
+                  selectedModel={selectedModel}
                   selectedIssue={selectedIssue}
                 />
               )}

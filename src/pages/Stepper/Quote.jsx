@@ -29,6 +29,7 @@ const Quote = ({
   error,
   device,
   selectedIssue,
+  selectedModel,
 }) => {
   return (
     <Fragment>
@@ -102,7 +103,7 @@ const Quote = ({
                 <Typography sx={{ fontWeight: "bold" }}>Device: </Typography>
               </Grid>
               <Grid xs={8.5} item>
-                <Typography>{device}</Typography>
+                <Typography>{`${device} > ${selectedModel}`}</Typography>
               </Grid>
 
               <Grid xs={3.5} item>
